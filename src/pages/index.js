@@ -1,5 +1,13 @@
 import * as React from "react"
+import Checkout from "../components/checkout"
+// import Checkout from "../components/cartProvider"
+import Products from "../components/Products/Products"
+import { loadStripe } from '@stripe/stripe-js'
+import CartOverview from '../components/CartOverview'
 
+import { CartProvider } from 'use-shopping-cart'
+
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 // styles
 const pageStyles = {
   color: "#232129",
@@ -101,6 +109,19 @@ const IndexPage = () => {
   return (
     <main style={pageStyles}>
       <title>Home Page</title>
+      <Checkout />
+      <Products />
+      <CartProvider
+      mode="client-only"
+      stripe={stripePromise}
+      successUrl={`${window.location.origin}/page-2/`}
+      cancelUrl={`${window.location.origin}/`}
+      currency="USD"
+      allowedCountries={['US', 'GB', 'CA']}
+      billingAddressCollection={true}
+    >
+      <CartOverview />
+    </CartProvider>
       <h1 style={headingStyles}>
         Congratulations
         <br />
@@ -126,7 +147,7 @@ const IndexPage = () => {
           </a>
         </li>
         {links.map(link => (
-          <li style={{ ...listItemStyles, color: link.color }}>
+          <li key={link.text} style={{ ...listItemStyles, color: link.color }}>
             <span>
               <a
                 style={linkStyle}
