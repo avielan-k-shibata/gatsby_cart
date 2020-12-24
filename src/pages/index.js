@@ -4,9 +4,9 @@ import Checkout from "../components/checkout"
 import Products from "../components/Products/Products"
 import { loadStripe } from '@stripe/stripe-js'
 import CartOverview from '../components/CartOverview'
-
+import Swiper from "react-id-swiper"
 import { CartProvider } from 'use-shopping-cart'
-
+import '../styles/swiper.css'
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 // styles
 const pageStyles = {
@@ -137,6 +137,13 @@ const IndexPage = () => {
           😎
         </span>
       </p>
+        <Swiper>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+    <div>Slide 4</div>
+    <div>Slide 5</div>
+  </Swiper>
       <ul style={listStyles}>
         <li style={docLinkStyle}>
           <a
