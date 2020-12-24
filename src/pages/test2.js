@@ -6,7 +6,7 @@ import CartOverview from '../components/CartOverview'
 
 import { loadStripe } from '@stripe/stripe-js'
 import { CartProvider } from 'use-shopping-cart'
-
+import RemoveCart from '../components/removeCart2'
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 
 const CartExample2 = () => (
@@ -28,6 +28,8 @@ const CartExample2 = () => (
     >
       <CartOverview />
       <Skus />
+      
+    <RemoveCart />
     </CartProvider>
   </div>
 )

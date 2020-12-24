@@ -27,7 +27,7 @@ const buttonStyles = {
 }
 
 const SkuCard = ({ sku }) => {
-  const { addItem, incrementItem, clearCart,removeItem } = useShoppingCart()
+  const { addItem } = useShoppingCart()
 
   return (
     <div style={cardStyles}>
@@ -39,25 +39,10 @@ const SkuCard = ({ sku }) => {
           currency: sku.currency,
         })}
       </p>
-      <button style={buttonStyles} onClick={() => addItem(sku, 1)}>
+      <button style={buttonStyles} onClick={() => addItem(sku)}>
         ADD TO CART
       </button>
-      <button style={buttonStyles} onClick={() => addItem(sku, 10)}>
-        ADD TO CART
-      </button>
-      <button
-            onClick={() => incrementItem(sku)}
-            aria-label={`Add one ${sku.name} to your cart`}
-          >
-            Add one {sku.name} to your cart
-          </button>
-          <button onClick={clearCart}>Remove all items</button>
-          <button
-            onClick={() => removeItem(sku)}
 
-          >
-            Remove from cart
-          </button>
     </div>
   )
 }

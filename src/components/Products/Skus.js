@@ -43,6 +43,7 @@ return (
             name: price.product.name,
             price: price.unit_amount,
             currency: price.currency,
+            id: price.id,
           }
           return <SkuCard key={price.id} sku={newSku} />
         })}

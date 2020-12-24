@@ -2,6 +2,9 @@ import React from "react"
 import { graphql } from "gatsby"
 import SkuCard from '../components/Products/SkuCard'
 import CartOverview from '../components/CartOverview'
+import RemoveCart from '../components/removeCart2'
+
+
 import { loadStripe } from '@stripe/stripe-js'
 import { CartProvider } from 'use-shopping-cart'
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
@@ -12,6 +15,8 @@ export default function Product({ data }) {
         name: price.product.name,
         price: price.unit_amount,
         currency: price.currency,
+        id: price.id,
+
       }
     return (
       <>
@@ -25,8 +30,9 @@ export default function Product({ data }) {
             allowedCountries={['JP']}
             billingAddressCollection={true}
         >
-            <CartOverview />
             <SkuCard sku={newSku} />
+            <RemoveCart />
+            <CartOverview />
         </CartProvider>
       </>
     )

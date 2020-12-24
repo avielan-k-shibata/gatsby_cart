@@ -23,7 +23,6 @@ const Cart = () => {
     clearCart,
   } = useShoppingCart()
 
-  console.log(useShoppingCart())
   return (
     <div>
       {/* This is where we'll render our cart */}
