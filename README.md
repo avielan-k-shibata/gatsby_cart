@@ -52,3 +52,4 @@ slider
 npm i swiper
 npm i react-id-swiper
 
+npm install firebase gatsby-plugin-firebase

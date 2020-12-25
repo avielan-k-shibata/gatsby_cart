@@ -57,5 +57,19 @@ module.exports = {
         downloadFiles: false,
       },
     },
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: "AIzaSyA3ZlxXxN22UL5TXFfuLxwJSInzFKuPuyA",
+          authDomain: "store-374d1.firebaseapp.com",
+          databaseURL: "https://store-374d1.firebaseapp.com",
+          projectId: "store-374d1",
+          storageBucket: "store-374d1.appspot.com",
+          messagingSenderId: "693676929040",
+          appId: "1:693676929040:web:d70ad6f51e336007e61a95"
+        }
+      }
+    },
   ],
 };

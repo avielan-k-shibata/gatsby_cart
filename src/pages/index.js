@@ -7,6 +7,12 @@ import CartOverview from '../components/CartOverview'
 import Swiper from "react-id-swiper"
 import { CartProvider } from 'use-shopping-cart'
 import '../styles/swiper.css'
+
+const sliderParams = {
+  slidesPerView: "auto",
+  centeredSlides: true,
+}
+
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 // styles
 const pageStyles = {
@@ -137,7 +143,7 @@ const IndexPage = () => {
           😎
         </span>
       </p>
-        <Swiper>
+        <Swiper {...sliderParams}>
     <div>Slide 1</div>
     <div>Slide 2</div>
     <div>Slide 3</div>

@@ -1,49 +1,25 @@
-import React from 'react'
-import { useShoppingCart } from 'use-shopping-cart'
+import React from "react"
+// import firebase from "gatsby-plugin-firebase"
 
-export default function Cart4() {
-  const { removeItem, cartDetails } = useShoppingCart()
-  const entries = []
-  for (const sku in cartDetails) {
-    const entry = cartDetails[sku]
-    entries.push(
-      <article
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '50%'
-        }}
-      >
-        <figure style={{ textAlign: 'center' }}>
-          <img
-            style={{ height: 200, width: 250 }}
-            src={entry.image}
-            alt={entry.name}
-          />
-          <figcaption>{entry.name}</figcaption>
-        </figure>
-        <p>{entry.formattedValue}</p>
-        <section
-          style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'space-evenly'
-          }}
-        >
-          {/* Removes the item from the cart */}
-          <button
-            onClick={() => removeItem(sku)}
-            aria-label={`Remove ${entry.name} from your cart`}
-            style={{ height: 50, width: 100, marginBottom: 30 }}
-          >
-            Remove from cart
-          </button>
-        </section>
-      </article>
-    )
-  }
-  if (entries.length) return entries
-  return <p>You currently don't have any items in your cart.</p>
+export default () => {
+  // firebase
+  //   .firestore()
+  //   .collection("user")
+  //   // .document("user")
+  //   .add({
+  //     name: "Heineken",
+  //     mail: "test",
+  //     address: "aitiken",
+  //   })
+  //   .then(ref => {
+  //     console.log("Added document with ID: ", ref.id)
+  //   })
+
+  return (
+    <div>
+      <h1>Firestore CRUD App </h1>
+      <h2>Item List</h2>
+      <h2>Add Item</h2>
+    </div>
+  )
 }
