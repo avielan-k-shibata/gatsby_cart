@@ -8,7 +8,7 @@ export default function RemoveCart() {
     const entry = cartDetails[sku]
 
     entries.push(
-      <article
+      <article key={sku}
         style={{
           display: 'flex',
           flexDirection: 'column',

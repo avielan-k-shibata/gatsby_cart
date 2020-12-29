@@ -3,11 +3,9 @@ import { graphql } from "gatsby"
 import SkuCard from '../components/Products/SkuCard'
 import CartOverview from '../components/CartOverview'
 import RemoveCart from '../components/removeCart2'
+import Layout from '../components/layout/layout'
 
 
-import { loadStripe } from '@stripe/stripe-js'
-import { CartProvider } from 'use-shopping-cart'
-const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 export default function Product({ data }) {
     const price = data.stripePrice
     const newSku = {
@@ -20,20 +18,12 @@ export default function Product({ data }) {
       }
     return (
       <>
-        
-        <CartProvider
-            mode="client-only"
-            stripe={stripePromise}
-            successUrl={`${window.location.origin}/page-2/`}
-            cancelUrl={`${window.location.origin}/`}
-            currency="JPY"
-            allowedCountries={['JP']}
-            billingAddressCollection={true}
-        >
+        <Layout>
             <SkuCard sku={newSku} />
             <RemoveCart />
             <CartOverview />
-        </CartProvider>
+        </Layout>
+        
       </>
     )
   }

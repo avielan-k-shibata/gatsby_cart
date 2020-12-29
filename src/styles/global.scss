@@ -1,0 +1,377 @@
+$jfont: 'Noto Sans JP', sans-serif;
+$efont: 'Josefin Sans', sans-serif;
+
+$bg00dp: #121212;
+$bg01dp: #1d1d1d;
+$bg02dp: #222222;
+$bg03dp: #242424;
+$bg04dp: #272727;
+$bg06dp: #2c2c2c;
+$bg08dp: #2d2d2d;
+$bg12dp: #323232;
+$bg16dp: #353535;
+$bg24dp: #373737;
+
+$bgWht01:rgba(255,255,255,0.05);
+$bgWht02:rgba(255,255,255,0.1);
+
+$fontColor01: rgba(255,255,255,1);
+$fontColor02: rgba(255,255,255,0.87);
+$fontColor03: rgba(255,255,255,0.6);
+$fontColor04: rgba(255,255,255,0.3);
+
+$pcMargin: 48px;
+$pcMargin_menu: 24px;
+$spMargin: 24px;
+$radius: 3px;
+
+html, body{
+    // background: #121212;
+    margin: 0;
+    padding: 0;
+    // scroll-behavior: smooth;
+    & p{
+        color: rgba(255,255,255,0.6);
+        font-family: $jfont;
+    }
+    & a{
+        text-decoration: none;
+        transition: .4s;
+        
+    }
+    & img{
+        vertical-align: bottom;
+    }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+div.shop_container{
+    width: 100%;
+    display: grid;
+    grid-template: 
+    "side main"
+    "side foot"  /
+    240px 1fr
+    ;
+    @media screen and (max-width: 769px){
+        grid-template: 
+    "main"
+    "side" 
+    "foot" /
+     1fr
+    ;
+    }
+    & > {
+        position: relative;
+    }
+    & header{
+        grid-area: head;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        &::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            z-index: 1;
+        }
+    }
+    & aside{
+        grid-area: side;
+        border-right: 1px solid #fff;
+        & div.menu{
+            position: sticky;
+            top: 0;
+            & h1 a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 72px;
+                border-bottom: 1px solid #fff;
+                @media screen and (max-width: 600px){
+                    border-top: 1px solid #fff;
+                }
+            }
+            & > div{
+                padding: 24px;
+                & p a{
+                    display: block;
+                    font-size: 14px;
+                    font-family: $jfont;
+                    margin-bottom: 16px;
+                    letter-spacing: 1.5px;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    & main{
+        grid-area: main;
+        // min-height: 120vh;
+        padding: 0 $pcMargin;
+        @media screen and (max-width: 600px){
+            padding: 0 $spMargin;
+        }
+        & div.top{
+            min-height: 40vh;
+        }
+        & div.title{
+            min-height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & h1{
+                font-family: $jfont;
+                letter-spacing: 6px;
+            }
+        }
+        & div.contents{
+
+            background: #fff;
+            margin-bottom: $pcMargin;
+            @media screen and (max-width: 600px){
+                margin-bottom: $spMargin;
+            }
+            & h2{
+                color: $bg24dp;
+                display: flex;
+                height: 72px;
+                align-items: center;
+                padding: 0 24px;
+                font-size: 16px;
+                & span{
+                    display: inline-block;
+                    font-size: 12px;
+                    margin-left: 12px;
+                }
+            }
+            div.productlist{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                @media screen and (max-width: 1200px){
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                @media screen and (max-width: 600px){
+                    grid-template-columns: repeat(1, 1fr);
+                }
+                background: #ddd;
+                row-gap: 1px;
+                column-gap: 1px;
+                padding: 1px 0;
+                & a{
+                    background: #fff;
+                }
+            }
+        }
+    }
+    & footer{
+        grid-area: foot;
+        height: 72px;
+        padding: 24px;
+        text-align: right;
+        border-top: 1px solid #fff;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        & p{
+            font-size: 14px;
+            font-family: $efont;
+        }
+    }
+    img{
+        width: 100%;
+        vertical-align: bottom;
+    }
+}
+
+.itembloc{
+    display: grid;
+    grid-template: 
+    "im im im"
+    ".. ti .."
+    ".. co .." /
+    12px 1fr 12px;
+    font-size: 14px;
+    font-family: $jfont;
+        & > :nth-child(1){
+            grid-area: im;
+            margin-bottom: 12px;
+        }
+        & > :nth-child(2){
+            grid-area: ti;
+            color: $bg24dp;
+            font-weight: 700;
+        }
+        & > :nth-child(3){
+            grid-area: co;
+            margin-bottom: 12px;
+            color: $bg24dp;
+
+        }
+}
+.pnkz{
+    display: flex;
+    margin-bottom: $pcMargin;
+    background: #fff;
+    padding: 4px;
+    font-family: $jfont;
+    font-weight: 300;
+    @media screen and (max-width: 600px){
+        margin-bottom: $spMargin;
+    }
+    & p{
+        color: rgba(0,0,0,.8);
+        font-size: 14px;
+        & a{
+            color: rgba(0,0,0,.5);
+            display: block;
+            padding: 4px 16px 4px 8px;
+            position: relative;
+            &::after{
+                content: "";
+                position: absolute;
+                top: 12px;
+                right: 2px;
+                width: 8px;
+                height: 8px;
+                border-top: 1px solid #ddd;
+                border-right: 1px solid #ddd;
+
+            }
+        }
+        &:last-child{
+            padding: 4px;
+
+        }
+    }
+}
+
+.contents_about{
+    width: 720px;
+    margin: 0 auto;
+    padding: 128px 0;
+    @media screen and (max-width: 1100px){
+        width: 100%;
+        padding: $pcMargin;
+    }
+    @media screen and (max-width: 600px){
+        width: 100%;
+        padding: $spMargin;
+    }
+}
+.tradelaw{
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #ddd;
+
+    & p{
+        color: rgba(0,0,0,0.8);
+        font-family: $jfont;
+        border-top: 1px solid #ddd;
+        font-weight: 300;
+        font-size: 16px;
+        padding: $pcMargin_menu 0;
+        &:nth-child(2n+1){
+            width: 30%;
+        }
+        &:nth-child(2n){
+            width: 70%;
+        }
+        @media screen and (max-width: 600px){
+            font-size: 14px;
+            &:nth-child(2n+1){
+                width: 100%;
+                font-weight: 500;
+                padding: 12px 0 0 0;
+            }
+            &:nth-child(2n){
+                width: 100%;
+                border-top: none;
+                padding: 4px 0 12px 0;
+
+            }
+        }
+    }
+}
+
+div.productpage {
+    main{
+        div.title{
+            min-height: $pcMargin;
+            @media screen and (max-width: 600px){
+                min-height: $spMargin;
+            }
+        }
+        div.product_detail{
+            display: grid;
+            grid-template: 
+            "im ca"
+            "in ca" /
+             1fr 336px;
+             @media screen and (max-width: 600px){
+                grid-template: 
+                "im"
+                "ca"
+                "in" /
+                 1fr;
+            }
+            & div.img{
+                grid-area: im;
+            }
+            & div.cart{
+                grid-area: ca;
+                
+                & div.cart_sticky{
+                    position: sticky;
+                    top: 0;
+                    padding: $pcMargin;
+                    & h3{
+                        color: rgba(0,0,0,0.8);
+                        margin: 0;
+                        padding: 0;
+                        font-family: $jfont;
+                    }
+                    & p{
+                        color: rgba(0,0,0,0.8);
+                        font-family: $jfont;
+
+                    }
+                }
+            }
+            & div.info{
+                grid-area: in;
+            }
+        }
+
+    }
+}
+
+div.sns{
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    & a{
+        width: 56px;
+        height: 56px;
+        padding: 12px;
+        opacity: 0.6;
+        &:hover{
+            opacity: 1;
+        }
+    }
+}

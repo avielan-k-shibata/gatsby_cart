@@ -1,9 +1,7 @@
-import * as React from "react"
-
-import CartOverview from '../components/CartOverview'
+import React from "react"
+// import { Link } from "gatsby"
 import Swiper from "react-id-swiper"
-import '../styles/swiper.css'
-import Layout from '../components/layout/layout'
+import '../../styles/swiper.css'
 
 const sliderParams = {
   slidesPerView: "auto",
@@ -13,13 +11,10 @@ const sliderParams = {
 }
 
 
-const IndexPage = () => {
+export default function Header() {
+  
   return (
-    <Layout>
-
-      <CartOverview />
-
-
+    <header>
       <Swiper {...sliderParams}>
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -27,9 +22,6 @@ const IndexPage = () => {
         <div>Slide 4</div>
         <div>Slide 5</div>
       </Swiper>
-
-    </Layout>
+    </header>
   )
 }
-
-export default IndexPage
