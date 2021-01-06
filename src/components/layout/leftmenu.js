@@ -22,7 +22,7 @@ export default function Leftmenu() {
             </div>
             <div className="sns">
               <Sns></Sns>
-          </div>
+            </div>
     </aside>
   )
 }

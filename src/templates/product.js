@@ -18,7 +18,7 @@ export default function Product({ data }) {
       }
     return (
       <>
-        <Layout>
+        <Layout pagestyle="detail">
             <SkuCard sku={newSku} />
             <RemoveCart />
             <CartOverview />

@@ -1,17 +1,6 @@
 import React, { useState } from 'react'
 import { useShoppingCart } from 'use-shopping-cart'
-
-const buttonStyles = {
-  fontSize: '13px',
-  textAlign: 'center',
-  color: '#fff',
-  outline: 'none',
-  padding: '12px',
-  boxShadow: '2px 5px 10px rgba(0,0,0,.1)',
-  backgroundColor: 'rgb(255, 178, 56)',
-  borderRadius: '6px',
-  letterSpacing: '1.5px',
-}
+import { Link } from "gatsby"
 
 const Cart = () => {
   const [loading, setLoading] = useState(false)
@@ -20,30 +9,39 @@ const Cart = () => {
     formattedTotalPrice,
     redirectToCheckout,
     cartCount,
-    clearCart,
+    // clearCart,
   } = useShoppingCart()
 
+  if(cartCount > 0){
   return (
-    <div>
+    <div className="cart_checkout">
       {/* This is where we'll render our cart */}
-      <p>Number of Items: {cartCount}</p>
-      <p>Total: {formattedTotalPrice}</p>
+      <p>アイテム数: <span>{cartCount}</span></p>
+      <p>合計金額: <span>{formattedTotalPrice}</span></p>
       {/* Redirects the user to Stripe */}
       <button
-        style={buttonStyles}
         disabled={loading}
         onClick={() => {
           setLoading(true)
           redirectToCheckout()
         }}
       >
-        {loading ? 'Loading...' : 'Checkout'}
+        {loading ? 'Loading...' : 'お支払いへ'}
       </button>
-      <button style={buttonStyles} onClick={clearCart}>
-        Clear cart
-      </button>
+      {/* <button onClick={clearCart}>
+        カートを空にする
+      </button> */}
+      <p><Link to="/">お買い物を続ける</Link></p>
     </div>
   )
+  }
+  else{
+    return(
+      <>
+      <p>・・・</p>
+      </>
+    )
+  }
 }
 
 export default Cart

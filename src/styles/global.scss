@@ -177,6 +177,125 @@ div.shop_container{
                     background: #fff;
                 }
             }
+            div.contents_cart{
+                // min-height: 80vh;
+                display: grid;
+                grid-template: 
+                "li ca" /
+                1fr 320px;
+                @media screen and (max-width: 1200px){
+                    grid-template: 
+                    "li" 
+                    "ca" /
+                    1fr;
+                }
+                padding: $pcMargin;
+                @media screen and (max-width: 769px){
+                    padding: $spMargin;
+                }
+                & div.cart_list{
+                    grid-area: li;
+                    border-right: 1px solid #efefef;
+                    @media screen and (max-width: 1200px){
+                        border-right: none;
+                    }
+                    & div.itemlist{
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        margin-bottom: $pcMargin;
+                        &:last-child{
+                            margin-bottom: 0;
+                            }
+                        @media screen and (max-width: 769px){
+                            margin-bottom: $spMargin;
+                            border-bottom: 1px dotted #ddd;
+                            &:last-child{
+                                margin-bottom: $spMargin;
+                                }
+                        }
+
+                        & p{
+                            color: #373737;
+                            &:nth-child(1){
+                                width: 150px;
+                                @media screen and (max-width: 600px){
+                                    width: 50%;
+                                }
+                            }
+                            &:nth-child(2){
+                                width: 150px;
+                                padding: 12px;
+                                font-size: 14px;
+                                & span{
+                                    display: block;
+                                }
+                                @media screen and (max-width: 600px){
+                                    width: 50%;
+                                }
+                            }
+                            &:nth-child(3){
+                                display: flex;
+                                justify-content: center;
+                                & button{
+                                    background: #ddd;
+                                    border: none;
+                                    width: 24px;
+                                    height: 24px;
+                                }
+                                & span{
+                                    display: inline-block;
+                                    margin: 0 12px;
+                                }
+                            }
+                            &:nth-child(4){
+                                padding: 24px;
+                                font-size: 14px;
+                            }
+                            &:nth-child(5){
+                                & button{
+                                    background: #fff;
+                                    border: none;
+                                    border-bottom: 1px solid #ddd;
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                & div.cart_checkout{
+                    grid-area: ca;
+                    padding-left: $pcMargin;
+                    @media screen and (max-width: 1200px){
+                        padding-left: 0;
+                    }
+                    & button{
+                        width: 100%;
+                        background: #ddd;
+                        padding: 16px 0;
+                        font-size: 16px;
+                        margin-bottom: $spMargin;
+                        border: none;
+                    }
+                    & p{
+                        color: #4f4f4f;
+                        margin-bottom: $spMargin;
+                        font-size: 14px;
+                        & span{
+                            display: inline-block;
+                            margin-left: 8px;
+                            font-size: 20px;
+                            font-weight: 700;
+                        }
+                        & a{
+                            color: #4f4f4f;
+                            display: block;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
         }
     }
     & footer{

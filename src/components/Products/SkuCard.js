@@ -39,7 +39,11 @@ const SkuCard = ({ sku }) => {
           currency: sku.currency,
         })}
       </p>
-      <button style={buttonStyles} onClick={() => addItem(sku)}>
+      <button style={buttonStyles} onClick={() => {
+        console.log('incart')
+        addItem(sku)}
+      }
+      >
         ADD TO CART
       </button>
 

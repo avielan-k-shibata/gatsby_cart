@@ -6,59 +6,46 @@ export default function RemoveCart() {
   const entries = []
   for (const sku in cartDetails) {
     const entry = cartDetails[sku]
-
+    console.log(entry.price.toLocaleString())
     entries.push(
-      <article key={sku}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '50%'
-        }}
-      >
-        <figure style={{ textAlign: 'center' }}>
+      <div key={sku} className="itemlist">
+        <p style={{ textAlign: 'center' }}>
           <img
-            style={{ height: 200, width: 250 }}
             src={entry.image}
             alt={entry.name}
           />
-          <figcaption>{entry.name}</figcaption>
-        </figure>
-        <p>{entry.formattedValue}</p>
-        <section
-          style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'space-evenly'
-          }}
-        >
-          {/* Removes the item from the cart */}
-          <button
-            onClick={() => incrementItem(sku)}
-            aria-label={`Remove ${entry.name} from your cart`}
-            style={{ height: 50, width: 100, marginBottom: 30 }}
-          >
-            +
-          </button>
+        </p>
+        <p>
+          <span>{entry.name}</span>
+          <span>&yen; {entry.price.toLocaleString()}</span>
+        </p>
+        <p>
           <button
             onClick={() => decrementItem(sku)}
             aria-label={`Remove ${entry.name} from your cart`}
-            style={{ height: 50, width: 100, marginBottom: 30 }}
           >
             -
           </button>
+          <span>{entry.quantity}</span>
+          <button
+            onClick={() => incrementItem(sku)}
+            aria-label={`Add ${entry.name} from your cart`}
+          >
+            +
+          </button>
+        </p>
+        <p>小計: {entry.formattedValue}</p>
+        <p>
           <button
             onClick={() => removeItem(sku)}
-            aria-label={`Remove ${entry.name} from your cart`}
-            style={{ height: 50, width: 100, marginBottom: 30 }}
+            aria-label={`delite ${entry.name} from your cart`}
           >
-            delite
+            削除
           </button>
-        </section>
-      </article>
+          </p>
+      </div>
     )
   }
   if (entries.length) return entries
-  return <p>You currently don't have any items in your cart.</p>
+  return <p>現在カートの中は空です。</p>
 }

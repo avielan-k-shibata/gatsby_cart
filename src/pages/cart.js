@@ -1,26 +1,27 @@
 import React from 'react'
 import CartOverview from '../components/CartOverview'
-import { loadStripe } from '@stripe/stripe-js'
-import { CartProvider } from 'use-shopping-cart'
+import Layout from '../components/layout/layout'
+import RemoveCart from '../components/removeCart2'
 
-const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 
 const Cartpage = () => {
 
   return (
-    <>
-    <CartProvider
-      mode="client-only"
-      stripe={stripePromise}
-      successUrl={`${window.location.origin}/page-2/`}
-      cancelUrl={`${window.location.origin}/`}
-      currency="JPY"
-      allowedCountries={['JP']}
-      billingAddressCollection={true}
-    >
-      <CartOverview />
-    </CartProvider>
-    </>
+    <Layout>
+            <div className="title">
+                <h1>CART</h1>
+            </div>
+            
+            <div className="contents">
+                <div className="contents_cart">
+                    <div className="cart_list">
+                      <RemoveCart />
+
+                    </div>
+                    <CartOverview />
+                </div>
+            </div>
+    </Layout>
   )
 }
 
