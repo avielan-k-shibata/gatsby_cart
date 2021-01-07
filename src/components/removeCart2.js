@@ -6,7 +6,6 @@ export default function RemoveCart() {
   const entries = []
   for (const sku in cartDetails) {
     const entry = cartDetails[sku]
-    console.log(entry.price.toLocaleString())
     entries.push(
       <div key={sku} className="itemlist">
         <p style={{ textAlign: 'center' }}>

@@ -1,12 +1,14 @@
 import React from "react"
 import { Link } from "gatsby"
 import Sns from "./sns"
+import Menucart from '../MenuCart'
 
 export default function Leftmenu() {
   return (
     <aside>
             <div className="menu">
                 <h1><Link to="">TITLE</Link></h1>
+                <div><Menucart/></div>
                 <div className="product">
                     <p><Link to="">商品一覧</Link></p>
                     <p><Link to="">レシピ</Link></p>
@@ -19,9 +21,9 @@ export default function Leftmenu() {
                     <p><Link to="">お問い合わせ</Link></p>
                     <p><Link to="">ご利用ガイド</Link></p>
                 </div>
-            </div>
-            <div className="sns">
-              <Sns></Sns>
+                <div className="sns">
+                  <Sns></Sns>
+                </div>
             </div>
     </aside>
   )
