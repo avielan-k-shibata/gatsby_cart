@@ -26,7 +26,7 @@ export default function Product({ data }) {
     return (
       <>
         <Layout pagestyle="productpage">
-            <div className="title">{product.productName}</div>
+            <div className="title"></div>
             <div className="pnkz">
                 <p><Link to="/">TOP</Link></p>
                 <p><Link to="/">{product.productCategory.title}</Link></p>
@@ -48,7 +48,7 @@ export default function Product({ data }) {
                     <div className="cart">
                         <div className="cart_sticky">
                             <h3>{product.productName}</h3>
-                            <p>&yen; {product.productPrice}</p>
+                            <p>&yen; {product.productPrice.toLocaleString()}</p>
                             <SkuCard sku={newSku} />
                         </div>
                     </div>
@@ -57,7 +57,6 @@ export default function Product({ data }) {
                             __html: product.productDescriptionNode.childMarkdownRemark.html,
                           }}
                         ></div>
-                    <Img fluid={product.productImage[0].fluid} />
                 </div>
             </div>
         </Layout>

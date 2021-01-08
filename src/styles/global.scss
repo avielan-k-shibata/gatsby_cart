@@ -138,6 +138,7 @@ div.shop_container{
             & h1{
                 font-family: $jfont;
                 letter-spacing: 6px;
+                color: #fff;
             }
         }
         & div.contents{
@@ -550,4 +551,32 @@ div.productpage {
         }
 
     }
+}
+
+div.menu_cart{
+    border-bottom: 1px solid #fff;
+    & a{
+        display: grid;
+        font-size: 14px;
+        font-family: $jfont;
+        color: #fff;
+        grid-template: 
+        "im it"/
+        48px 1fr;
+        & > span{
+            &:nth-child(1){
+                grid-area: im;
+            }
+            &:nth-child(2){
+                grid-area: it;
+                & span{
+                    display: block;
+                }
+            }
+
+        }
+    }
+}
+button{
+    cursor: pointer;
 }

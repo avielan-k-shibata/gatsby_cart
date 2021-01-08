@@ -1,4 +1,5 @@
 const path = require(`path`)
+const { paginate } = require("gatsby-awesome-pagination")
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
@@ -37,6 +38,16 @@ exports.createPages = async ({ graphql, actions }) => {
               }
             }
           }
+          allDatoCmsProduct {
+            nodes {
+              id
+              productCategory {
+                title
+              }
+              productId
+            }
+            totalCount
+          }
         }
           `
       );
@@ -45,6 +56,8 @@ exports.createPages = async ({ graphql, actions }) => {
       }
 
   const products = result.data.allStripePrice.nodes
+  const products2 = result.data.allDatoCmsProduct.nodes
+
 
   products.forEach((product, index) => {
     createPage({
@@ -55,4 +68,12 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+
+  paginate({
+    createPage, // The Gatsby `createPage` function
+    items: products2, // An array of objects
+    itemsPerPage: 12, // How many items you want per page
+    pathPrefix: '/products', // Creates pages like `/blog`, `/blog/2`, etc
+    component: path.resolve('./src/templates/productList.js'), // Just like `createPage()`
+  })
 }

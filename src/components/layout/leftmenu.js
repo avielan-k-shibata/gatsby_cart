@@ -7,14 +7,14 @@ export default function Leftmenu() {
   return (
     <aside>
             <div className="menu">
-                <h1><Link to="">TITLE</Link></h1>
-                <div><Menucart/></div>
+                <h1><Link to="/">TITLE</Link></h1>
+                <Menucart/>
                 <div className="product">
-                    <p><Link to="">商品一覧</Link></p>
+                    <p><Link to="/products">商品一覧</Link></p>
                     <p><Link to="">レシピ</Link></p>
                 </div>
                 <div className="about">
-                    <p><Link to="">ABOUT</Link></p>
+                    <p><Link to="/about">ABOUT</Link></p>
                     <p><Link to="">個人情報保護法について</Link></p>
                     <p><Link to="">特定商取引法に基づく表示</Link></p>
                     <p><Link to="">利用規約</Link></p>

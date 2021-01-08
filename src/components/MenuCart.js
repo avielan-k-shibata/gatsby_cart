@@ -12,17 +12,27 @@ const Menucart = () => {
 
   if(cartCount > 0){
   return (
-    <div className="cart_checkout">
-      <Link to="/cart">t</Link>
-      <p>アイテム数: <span>{cartCount}</span></p>
-      <p>合計金額: <span>{formattedTotalPrice}</span></p>
+    <div className="menu_cart">
+      <Link to="/cart">
+      <span></span>
+      <span>
+        <span>{cartCount}点:　計{formattedTotalPrice}</span>
+      </span>
+      </Link>
     </div>
   )
   }
   else{
     return(
       <>
-      <p>・・・</p>
+    <div className="menu_cart">
+      <Link to="/cart">
+      <span></span>
+      <span>
+        現在カートの中は空です。
+      </span>
+      </Link>
+    </div>
       </>
     )
   }
