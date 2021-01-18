@@ -5,7 +5,7 @@ import Layout from '../components/layout/layout'
 import Img from "gatsby-image"
 
 export default function ProductList({ data }) {
-    const product = data.allDatoCmsProduct.nodes
+    const product = data.allDatoCmsRecipe.nodes
 
     return (
       <>
@@ -13,17 +13,17 @@ export default function ProductList({ data }) {
             <div className="title"><h1>レシピ一覧</h1></div>
             <div className="pnkz">
                 <p><Link to="/">TOP</Link></p>
-                <p>商品一覧</p>
+                <p>レシピ一覧</p>
             </div>
             <div className="contents">
                 <div className="productlist">
                   {product.map( (e, index )=>{
-                    const tolink = `/products/${e.productId}`
+                    const tolink = `/recipe/${e.slug}`
                     return(
                       <Link key={index} className="itembloc" to={tolink}>
-                        <span><Img fluid={e.productImage[0].fluid} /></span>
-                        <span>{e.productName}</span>
-                        <span>&yen; {e.productPrice.toLocaleString()}</span>
+                        <span><Img fluid={e.image.fluid} /></span>
+                        <span>{e.title}</span>
+                        <span>{e.category.title}</span>
                       </Link>
                     )
                   })}
@@ -40,27 +40,28 @@ export default function ProductList({ data }) {
 
 export const query = graphql`
 query ($skip: Int!, $limit: Int!)  {
-    allDatoCmsProduct(
-      filter: {productStatus: {eq: true}}
+  allDatoCmsRecipe(
+      filter: {recipeStatus: {eq: true}}
       skip: $skip 
       limit: $limit 
       ) {
     nodes {
       id
-      productCategory {
+      category {
         title
       }
-      productId
-      productName
-      productPrice
-      productImage{
+      title
+      tag{
+        title
+      }
+      slug
+      image{
         fluid(maxWidth: 600, forceBlurhash: false, imgixParams: { fm: "jpg", auto: "compress", fit: "crop" ,w: "600", h: "424"}) {
           ...GatsbyDatoCmsFluid
         }
       }
     }
   }
-
 }
 
 `

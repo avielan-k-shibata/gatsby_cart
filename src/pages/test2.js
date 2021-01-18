@@ -20,8 +20,8 @@ const CartExample2 = () => (
     <CartProvider
       mode="client-only"
       stripe={stripePromise}
-      successUrl={`${window.location.origin}/page-2/`}
-      cancelUrl={`${window.location.origin}/`}
+      successUrl="/"
+      cancelUrl="/cart"
       currency="USD"
       allowedCountries={['US', 'GB', 'CA']}
       billingAddressCollection={true}

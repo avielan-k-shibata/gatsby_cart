@@ -4,7 +4,11 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: "My Gatsby Site",
+    title: 'OUT-PUT',
+    description: `
+    FXや自動売買、プログラミング　JavaScriptやPHP　教育関連で学んだことを公開しています。
+    `,
+    siteUrl: 'https://blog01main.gtsb.io',
   },
   plugins: [
     {

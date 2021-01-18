@@ -48,6 +48,19 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             totalCount
           }
+          allDatoCmsRecipe(filter: {recipeStatus: {eq: true}}) {
+            nodes {
+              id
+              title
+              slug
+              tag {
+                title
+              }
+              category {
+                title
+              }
+            }
+          }
         }
           `
       );
@@ -57,8 +70,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const products = result.data.allStripePrice.nodes
   const products2 = result.data.allDatoCmsProduct.nodes
+  const recipes = result.data.allDatoCmsRecipe.nodes
 
-
+  // PRODUCTS
   products.forEach((product, index) => {
     createPage({
       path: `products/${product.product.metadata.id}`,
@@ -70,10 +84,30 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   paginate({
-    createPage, // The Gatsby `createPage` function
-    items: products2, // An array of objects
-    itemsPerPage: 12, // How many items you want per page
-    pathPrefix: '/products', // Creates pages like `/blog`, `/blog/2`, etc
+    createPage,
+    items: products2,
+    itemsPerPage: 12,
+    pathPrefix: '/products',
     component: path.resolve('./src/templates/productList.js'), // Just like `createPage()`
   })
+
+  // RECIPES
+  paginate({
+    createPage,
+    items: recipes,
+    itemsPerPage: 12, 
+    pathPrefix: '/recipes', 
+    component: path.resolve('./src/templates/recipeList.js'), // Just like `createPage()`
+  })
+
+  // DETAIL RECIPE
+  recipes.forEach((recipe, index) => {
+    createPage({
+      path: `recipe/${recipe.slug}`,
+      component: path.resolve('./src/templates/recipe.js'),
+      context: {
+        id: recipe.slug,
+      },
+    });
+  });
 }

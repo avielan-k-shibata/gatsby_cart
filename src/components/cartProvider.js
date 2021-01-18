@@ -11,10 +11,10 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_PUBLIC)
 ReactDOM.render(
   <CartProvider
     stripe={stripePromise}
-    successUrl="http://localhost:8000/"
-    cancelUrl="http://localhost:8000/"
+    successUrl="/"
+    cancelUrl="/cart"
     currency="JPY"
-    allowedCountries={['JP', 'GB', 'CA']}
+    allowedCountries={['JP']}
     billingAddressCollection={true}
   >
     <App />

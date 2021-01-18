@@ -11,12 +11,12 @@ export default function Leftmenu() {
                 <Menucart/>
                 <div className="product">
                     <p><Link to="/products">商品一覧</Link></p>
-                    <p><Link to="">レシピ</Link></p>
+                    <p><Link to="/recipes">レシピ</Link></p>
                 </div>
                 <div className="about">
                     <p><Link to="/about">ABOUT</Link></p>
-                    <p><Link to="">個人情報保護法について</Link></p>
-                    <p><Link to="">特定商取引法に基づく表示</Link></p>
+                    <p><Link to="/tradelaw">個人情報保護法について</Link></p>
+                    <p><Link to="/tradelaw">特定商取引法に基づく表示</Link></p>
                     <p><Link to="">利用規約</Link></p>
                     <p><Link to="">お問い合わせ</Link></p>
                     <p><Link to="">ご利用ガイド</Link></p>

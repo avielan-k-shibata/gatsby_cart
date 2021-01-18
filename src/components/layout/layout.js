@@ -8,15 +8,17 @@ import { loadStripe } from '@stripe/stripe-js'
 import { CartProvider } from 'use-shopping-cart'
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 
-const Layout = ({children, pagestyle}) =>{
+const Layout = ({children, pagestyle, pathname}) =>{
     const containerName = `shop_container ${pagestyle}`
     return (
       <>
         <CartProvider
             mode="client-only"
             stripe={stripePromise}
-            successUrl={`${window.location.origin}/page-2/`}
-            cancelUrl={`${window.location.origin}/`}
+            // successUrl={`${window.location.origin}/page-2/`}
+            // cancelUrl={`${window.location.origin}/`}
+            successUrl="/"
+            cancelUrl="/cart"
             currency="JPY"
             allowedCountries={['JP']}
             billingAddressCollection={true}
@@ -26,6 +28,7 @@ const Layout = ({children, pagestyle}) =>{
             <Leftmenu/>
             <main>
                 {children}
+                {pathname}
             </main>
             
             <Footer/>
